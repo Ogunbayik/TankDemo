@@ -25,6 +25,7 @@ public class PlayerController : MonoBehaviour
     private Vector3 movementDirection;
 
     private bool isMoving = false;
+    private bool canAttack = true;
     private void Awake()
     {
         playerRb = GetComponent<Rigidbody>();
@@ -32,19 +33,22 @@ public class PlayerController : MonoBehaviour
     }
     void Update()
     {
+        if (canAttack)
+            HandleAttack();
+        else
+        {
+            reloadTimer -= Time.deltaTime;
+
+            if (reloadTimer <= 0)
+            {
+                canAttack = true;
+                reloadTimer = 0;
+            }
+        }
+
         HandleMovement();
-        SetPlayerState();
         HandleRotation();
     }
-
-    private void SetPlayerState()
-    {
-        if (isMoving)
-            stateController.ChangeState(PlayerStateController.States.Moving);
-        else
-            stateController.ChangeState(PlayerStateController.States.Idle);
-    }
-
     private void HandleMovement()
     {
         horizontalInput = Input.GetAxis(Consts.PlayerInput.HORIZONTAL_INPUT);
@@ -67,6 +71,17 @@ public class PlayerController : MonoBehaviour
             tankVisual.transform.rotation = Quaternion.RotateTowards(tankVisual.transform.rotation, desiredRotation, tankRotationSpeed * Time.deltaTime);
         }
     }
+    private void HandleAttack()
+    {
+        var pressedAttackButton = Input.GetKeyDown(KeyCode.Space);
+
+        if(pressedAttackButton)
+        {
+            CreateBullet(attackPosition.position, bulletSpeed);
+            reloadTimer = maxReloadTime;
+            canAttack = false;
+        }
+    }
 
     private void CreateBullet(Vector3 spawnPosition, float speed)
     {
@@ -74,5 +89,10 @@ public class PlayerController : MonoBehaviour
         bullet.transform.position = spawnPosition;
         bullet.transform.rotation = tankVisual.transform.rotation;
         bullet.GetComponent<PlayerBullet>().Movement(speed);
+    }
+
+    public bool IsMoving()
+    {
+        return isMoving;
     }
 }

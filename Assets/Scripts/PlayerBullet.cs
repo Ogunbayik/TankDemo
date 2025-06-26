@@ -14,6 +14,6 @@ public class PlayerBullet : MonoBehaviour
     {
         var direction = transform.forward;
         movementSpeed = speed;
-        transform.Translate(direction * movementSpeed * Time.deltaTime);
+        transform.Translate(direction * movementSpeed * Time.deltaTime, Space.World);
     }
 }

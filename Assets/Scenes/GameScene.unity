@@ -306,14 +306,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1604909923034011132, guid: f9191519f1f149445aa5240a53a71938, type: 3}
-      propertyPath: bulletSpeed
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1604909923034011132, guid: f9191519f1f149445aa5240a53a71938, type: 3}
-      propertyPath: maxReloadTime
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 3350746425479243009, guid: f9191519f1f149445aa5240a53a71938, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -361,10 +353,6 @@ PrefabInstance:
     - target: {fileID: 3350746425479543009, guid: f9191519f1f149445aa5240a53a71938, type: 3}
       propertyPath: m_Name
       value: Tank
-      objectReference: {fileID: 0}
-    - target: {fileID: 4594193375294160030, guid: f9191519f1f149445aa5240a53a71938, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 1.25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f9191519f1f149445aa5240a53a71938, type: 3}

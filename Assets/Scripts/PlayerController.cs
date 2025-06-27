@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public PlayerStateController stateController;
-
     private Rigidbody playerRb;
 
     [Header("General Settings")]
@@ -18,6 +16,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float bulletSpeed;
     [SerializeField] private float maxReloadTime;
 
+    [SerializeField] private Color bulletColor;
+    [SerializeField] private Color bulletTrailColor;
+
     private float horizontalInput;
     private float verticalInput;
     private float reloadTimer = 0;
@@ -29,7 +30,6 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         playerRb = GetComponent<Rigidbody>();
-        stateController = GetComponent<PlayerStateController>();
     }
     void Update()
     {
@@ -77,18 +77,16 @@ public class PlayerController : MonoBehaviour
 
         if(pressedAttackButton)
         {
-            CreateBullet(attackPosition.position, bulletSpeed);
+            CreateBullet();
             reloadTimer = maxReloadTime;
             canAttack = false;
         }
     }
 
-    private void CreateBullet(Vector3 spawnPosition, float speed)
+    private void CreateBullet()
     {
-        var bullet = Instantiate(bulletPrefab);
-        bullet.transform.position = spawnPosition;
-        bullet.transform.rotation = tankVisual.transform.rotation;
-        bullet.GetComponent<PlayerBullet>().Movement(speed);
+        var bullet = Instantiate(bulletPrefab, attackPosition.transform.position, attackPosition.transform.rotation);
+        bullet.GetComponent<Bullet>().InitializeBullet(bulletColor, bulletTrailColor, bulletSpeed);
     }
 
     public bool IsMoving()

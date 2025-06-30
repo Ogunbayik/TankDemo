@@ -217,7 +217,7 @@ Transform:
   m_LocalScale: {x: 5, y: 0.5, z: 5}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!208 &517297394
 NavMeshObstacle:
@@ -329,7 +329,7 @@ Transform:
   m_LocalScale: {x: 5, y: 5, z: 0.2}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!208 &545104279
 NavMeshObstacle:
@@ -441,7 +441,7 @@ Transform:
   m_LocalScale: {x: 5, y: 5, z: 0.2}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!208 &571924487
 NavMeshObstacle:
@@ -553,7 +553,7 @@ Transform:
   m_LocalScale: {x: 3, y: 1, z: 3}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1300840273
 GameObject:
@@ -649,7 +649,7 @@ Transform:
   m_LocalScale: {x: 5, y: 5, z: 0.2}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!208 &1300840278
 NavMeshObstacle:
@@ -937,7 +937,7 @@ Transform:
   m_LocalScale: {x: 5, y: 0.5, z: 5}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!208 &1714197697
 NavMeshObstacle:
@@ -964,7 +964,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5033401004872796632, guid: 119b6df9ed8672649bc5387372d61f06, type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5033401004872796632, guid: 119b6df9ed8672649bc5387372d61f06, type: 3}
       propertyPath: m_LocalPosition.x
@@ -976,7 +976,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5033401004872796632, guid: 119b6df9ed8672649bc5387372d61f06, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -7.78
       objectReference: {fileID: 0}
     - target: {fileID: 5033401004872796632, guid: 119b6df9ed8672649bc5387372d61f06, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1007,6 +1007,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6941688714723009342, guid: 119b6df9ed8672649bc5387372d61f06, type: 3}
+      propertyPath: bulletSpeed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6941688714723009342, guid: 119b6df9ed8672649bc5387372d61f06, type: 3}
+      propertyPath: bulletDamage
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6941688714723009342, guid: 119b6df9ed8672649bc5387372d61f06, type: 3}
       propertyPath: bulletTrailColor.b
       value: 1
       objectReference: {fileID: 0}
@@ -1024,7 +1032,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8819240483887713897, guid: 119b6df9ed8672649bc5387372d61f06, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 119b6df9ed8672649bc5387372d61f06, type: 3}
@@ -1035,6 +1043,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5062489795697614721, guid: c396e522904b9064e969a59b7d4865bf, type: 3}
+      propertyPath: bulletDamage
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 5062489795697614726, guid: c396e522904b9064e969a59b7d4865bf, type: 3}
       propertyPath: m_Name
       value: EnemyTank
@@ -1082,6 +1094,10 @@ PrefabInstance:
     - target: {fileID: 5062489795698033254, guid: c396e522904b9064e969a59b7d4865bf, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5821645076568135784, guid: c396e522904b9064e969a59b7d4865bf, type: 3}
+      propertyPath: maxHealth
+      value: 50
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c396e522904b9064e969a59b7d4865bf, type: 3}

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using System;
 
 public class EnemyTank : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class EnemyTank : MonoBehaviour
     [Header("Attack Settings")]
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private float bulletSpeed;
+    [SerializeField] private int bulletDamage;
     [SerializeField] private float minAttackTime;
     [SerializeField] private float maxAttackTime;
     [SerializeField] private Transform firePosition;
@@ -51,7 +53,7 @@ public class EnemyTank : MonoBehaviour
 
     private bool GetRandomPosition(Vector3 center, float moveRange, out Vector3 result)
     {
-        var randomPoint = center + Random.insideUnitSphere * moveRange;
+        var randomPoint = center + UnityEngine.Random.insideUnitSphere * moveRange;
         NavMeshHit hit;
 
         if(NavMesh.SamplePosition(randomPoint,out hit, moveRange, NavMesh.AllAreas))
@@ -78,12 +80,12 @@ public class EnemyTank : MonoBehaviour
     private void CreateBullet()
     {
         var bullet = Instantiate(bulletPrefab, firePosition.transform.position, firePosition.transform.rotation);
-        bullet.GetComponent<Bullet>().InitializeBullet(bulletColor, bulletTrailColor, bulletSpeed);
+        bullet.GetComponent<Bullet>().InitializeBullet(bulletColor, bulletTrailColor, bulletSpeed, bulletDamage);
     }
 
     private float GetRandomAttackTime()
     {
-        var randomTime = Random.Range(minAttackTime, maxAttackTime);
+        var randomTime = UnityEngine.Random.Range(minAttackTime, maxAttackTime);
         return randomTime;
     }
 

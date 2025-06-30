@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8037961112325150638}
   - component: {fileID: 2007535260721609712}
+  - component: {fileID: 7933361537283127150}
   m_Layer: 0
   m_Name: Bullet
   m_TagString: Untagged
@@ -45,7 +46,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shellVisual: {fileID: 7499017776266230346}
-  trailRenderer: {fileID: 7499017776266230349}
+--- !u!65 &7933361537283127150
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2007535260721609713}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.16, y: 0.16, z: 0.4}
+  m_Center: {x: 0, y: 0, z: 0.14}
 --- !u!1 &7499017776266230346
 GameObject:
   m_ObjectHideFlags: 0

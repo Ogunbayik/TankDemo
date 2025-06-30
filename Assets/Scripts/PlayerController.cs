@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private Color bulletColor;
     [SerializeField] private Color bulletTrailColor;
+    [SerializeField] private int bulletDamage;
 
     private float horizontalInput;
     private float verticalInput;
@@ -86,7 +87,7 @@ public class PlayerController : MonoBehaviour
     private void CreateBullet()
     {
         var bullet = Instantiate(bulletPrefab, attackPosition.transform.position, attackPosition.transform.rotation);
-        bullet.GetComponent<Bullet>().InitializeBullet(bulletColor, bulletTrailColor, bulletSpeed);
+        bullet.GetComponent<Bullet>().InitializeBullet(bulletColor, bulletTrailColor, bulletSpeed, bulletDamage);
     }
 
     public bool IsMoving()

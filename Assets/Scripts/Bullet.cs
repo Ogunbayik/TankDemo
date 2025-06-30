@@ -11,6 +11,7 @@ public class Bullet : MonoBehaviour
     private Color bulletColor;
     private Color trailColor;
     private float movementSpeed;
+    private int bulletDamage;
     private void Awake()
     {
         trailRenderer = GetComponentInChildren<TrailRenderer>();
@@ -18,18 +19,19 @@ public class Bullet : MonoBehaviour
 
     private void Start()
     {
-        InitializeBullet(bulletColor, trailColor, movementSpeed);
+        InitializeBullet(bulletColor, trailColor, movementSpeed, bulletDamage);
     }
     void Update()
     {
         Movement();
     }
 
-    public void InitializeBullet(Color color, Color t_Color, float speed)
+    public void InitializeBullet(Color color, Color t_Color, float speed, int damage)
     {
         bulletColor = color;
         movementSpeed = speed;
         trailColor = t_Color;
+        bulletDamage = damage;
 
         shellVisual.GetComponent<MeshRenderer>().material.color = bulletColor;
         Material trailMaterial = trailRenderer.material;
@@ -43,4 +45,20 @@ public class Bullet : MonoBehaviour
         var direction = transform.forward;
         transform.Translate(direction * movementSpeed * Time.deltaTime, Space.World);
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.TryGetComponent<EnemyHealth>(out EnemyHealth enemy))
+        {
+            enemy.TakeDamage(bulletDamage);
+            Destroy(this.gameObject);
+            Debug.Log("Collision");
+        }
+        else if(collision.gameObject.TryGetComponent<PlayerHealth>(out PlayerHealth player))
+        {
+            player.Death();
+        }
+    }
+
+
 }

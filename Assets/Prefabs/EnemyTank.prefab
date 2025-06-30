@@ -257,6 +257,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5062489795698033254}
   - component: {fileID: 5062489795697614721}
+  - component: {fileID: 5821645076568135784}
   - component: {fileID: 7834565722126383347}
   - component: {fileID: 5062489795697614727}
   m_Layer: 0
@@ -302,6 +303,18 @@ MonoBehaviour:
   firePosition: {fileID: 6269141745638497273}
   bulletColor: {r: 0.5283019, g: 0, b: 0, a: 1}
   bulletTrailColor: {r: 1, g: 0, b: 0, a: 0.4}
+--- !u!114 &5821645076568135784
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5062489795697614726}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 950000827c5c83b46bea75345fad65b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!54 &7834565722126383347
 Rigidbody:
   m_ObjectHideFlags: 0

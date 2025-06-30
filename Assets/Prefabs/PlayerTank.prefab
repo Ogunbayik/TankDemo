@@ -404,6 +404,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5033401004872796632}
   - component: {fileID: 6941688714723009342}
+  - component: {fileID: 4393568366667795918}
   - component: {fileID: 7707146713831955157}
   - component: {fileID: 6014039960998350584}
   m_Layer: 0
@@ -449,6 +450,19 @@ MonoBehaviour:
   maxReloadTime: 3
   bulletColor: {r: 0, g: 1, b: 0.95956135, a: 1}
   bulletTrailColor: {r: 0, g: 0.035871744, b: 1, a: 0.4}
+  bulletDamage: 0
+--- !u!114 &4393568366667795918
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8819240483887713897}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b4b2e9c07e9a994fb2f8a3dd6bd61cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!54 &7707146713831955157
 Rigidbody:
   m_ObjectHideFlags: 0

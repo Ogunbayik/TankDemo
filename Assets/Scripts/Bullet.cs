@@ -12,6 +12,8 @@ public class Bullet : MonoBehaviour
     private Color trailColor;
     private float movementSpeed;
     private int bulletDamage;
+
+    private bool isPlayerBullet;
     private void Awake()
     {
         trailRenderer = GetComponentInChildren<TrailRenderer>();
@@ -19,19 +21,20 @@ public class Bullet : MonoBehaviour
 
     private void Start()
     {
-        InitializeBullet(bulletColor, trailColor, movementSpeed, bulletDamage);
+        InitializeBullet(bulletColor, trailColor, movementSpeed, bulletDamage, isPlayerBullet);
     }
     void Update()
     {
         Movement();
     }
 
-    public void InitializeBullet(Color color, Color t_Color, float speed, int damage)
+    public void InitializeBullet(Color color, Color t_Color, float speed, int damage, bool isPlayer)
     {
         bulletColor = color;
         movementSpeed = speed;
         trailColor = t_Color;
         bulletDamage = damage;
+        isPlayerBullet = isPlayer;
 
         shellVisual.GetComponent<MeshRenderer>().material.color = bulletColor;
         Material trailMaterial = trailRenderer.material;
@@ -46,19 +49,23 @@ public class Bullet : MonoBehaviour
         transform.Translate(direction * movementSpeed * Time.deltaTime, Space.World);
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision.gameObject.TryGetComponent<EnemyHealth>(out EnemyHealth enemy))
+        if (other.gameObject.TryGetComponent<EnemyHealth>(out EnemyHealth enemy))
         {
+            if (!isPlayerBullet)
+                return;
+
             enemy.TakeDamage(bulletDamage);
             Destroy(this.gameObject);
-            Debug.Log("Collision");
         }
-        else if(collision.gameObject.TryGetComponent<PlayerHealth>(out PlayerHealth player))
+        else if (other.gameObject.TryGetComponent<PlayerHealth>(out PlayerHealth player))
         {
+            if (isPlayerBullet)
+                return;
+
             player.Death();
         }
     }
-
 
 }

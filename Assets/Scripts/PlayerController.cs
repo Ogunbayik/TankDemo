@@ -15,11 +15,11 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private float bulletSpeed;
     [SerializeField] private float maxReloadTime;
-
+    [SerializeField] private int bulletDamage;
+    [Header("Color Settings")]
     [SerializeField] private Color bulletColor;
     [SerializeField] private Color bulletTrailColor;
-    [SerializeField] private int bulletDamage;
-
+    
     private float horizontalInput;
     private float verticalInput;
     private float reloadTimer = 0;
@@ -87,7 +87,7 @@ public class PlayerController : MonoBehaviour
     private void CreateBullet()
     {
         var bullet = Instantiate(bulletPrefab, attackPosition.transform.position, attackPosition.transform.rotation);
-        bullet.GetComponent<Bullet>().InitializeBullet(bulletColor, bulletTrailColor, bulletSpeed, bulletDamage);
+        bullet.GetComponent<Bullet>().InitializeBullet(bulletColor, bulletTrailColor, bulletSpeed, bulletDamage, true);
     }
 
     public bool IsMoving()

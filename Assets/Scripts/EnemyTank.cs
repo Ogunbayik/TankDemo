@@ -12,21 +12,31 @@ public class EnemyTank : MonoBehaviour
     [SerializeField] private float wanderRadius;
     [SerializeField] private float maxWanderTimer;
     [Header("Attack Settings")]
+    [SerializeField] private Transform firePosition;
     [SerializeField] private GameObject bulletPrefab;
-    [SerializeField] private float bulletSpeed;
     [SerializeField] private int bulletDamage;
+    [SerializeField] private float bulletSpeed;
     [SerializeField] private float minAttackTime;
     [SerializeField] private float maxAttackTime;
-    [SerializeField] private Transform firePosition;
-    [SerializeField] private Color bulletColor;
-    [SerializeField] private Color bulletTrailColor;
+    [Header("Color Settings")]
+    [SerializeField] private Color[] bodyColors;
+    [SerializeField] private Color[] bulletColors;
+    [SerializeField] private Color[] bulletTrailColors;
 
     private float wanderTimer;
     private float attackTimer;
+
+    private Color bulletColor;
+    private Color bulletTrailColor;
     private void Awake()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
         attackTimer = GetRandomAttackTime();
+
+    }
+    private void Start()
+    {
+        SetRandomTankColor();
     }
     void Update()
     {
@@ -80,13 +90,26 @@ public class EnemyTank : MonoBehaviour
     private void CreateBullet()
     {
         var bullet = Instantiate(bulletPrefab, firePosition.transform.position, firePosition.transform.rotation);
-        bullet.GetComponent<Bullet>().InitializeBullet(bulletColor, bulletTrailColor, bulletSpeed, bulletDamage);
+        bullet.GetComponent<Bullet>().InitializeBullet(bulletColor, bulletTrailColor, bulletSpeed, bulletDamage, false);
     }
 
     private float GetRandomAttackTime()
     {
         var randomTime = UnityEngine.Random.Range(minAttackTime, maxAttackTime);
         return randomTime;
+    }
+
+    private void SetRandomTankColor()
+    {
+        MeshRenderer[] allMeshRenderers = transform.GetComponentsInChildren<MeshRenderer>();
+        var randomIndex = UnityEngine.Random.Range(0, bodyColors.Length);
+
+        for (int i = 0; i < allMeshRenderers.Length; i++)
+        {
+            allMeshRenderers[i].material.color = bodyColors[randomIndex];
+            bulletColor = bulletColors[randomIndex];
+            bulletTrailColor = bulletTrailColors[randomIndex];
+        }
     }
 
 }

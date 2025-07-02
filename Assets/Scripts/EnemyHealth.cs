@@ -16,6 +16,20 @@ public class EnemyHealth : MonoBehaviour
     {
         currentHealth = maxHealth;
     }
+    private void OnEnable()
+    {
+        OnDeath += EnemyHealth_OnDeath;
+    }
+    private void OnDisable()
+    {
+        OnDeath -= EnemyHealth_OnDeath;
+    }
+
+    private void EnemyHealth_OnDeath()
+    {
+        SpawnManager.Instance.DecreaseEnemyCount();
+        Destroy(this.gameObject);
+    }
 
     public void TakeDamage(int damage)
     {
@@ -29,7 +43,6 @@ public class EnemyHealth : MonoBehaviour
             currentHealth = 0;
             OnDeath?.Invoke();
         }
-
-
     }
+
 }
